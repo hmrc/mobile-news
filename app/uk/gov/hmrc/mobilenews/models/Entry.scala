@@ -38,11 +38,11 @@ object Entry {
   ).mapN(apply _)
 }
 
-case class Feed(id: Option[String], entries: Seq[Entry])
+case class Feed(entries: Seq[Entry])
 object Feed {
   implicit val feedFormat: Format[Feed] = Json.format[Feed]
 
   implicit val reader: XmlReader[Feed] =
-    ((__ \ "id").read[String].optional, (__ \ "entry").read(seq[Entry]))
-      .mapN(apply _)
+    (__ \ "entry").read(seq[Entry])
+      .map(apply _)
 }
