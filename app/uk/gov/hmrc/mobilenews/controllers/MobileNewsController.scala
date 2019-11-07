@@ -35,8 +35,7 @@ class MobileNewsController @Inject()(appConfig: AppConfig,
 
   val feed: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(
-      Ok(Json.prettyPrint(Json.toJson(mobileNewsService.getFeed())))
+      Ok(Json.toJson(mobileNewsService.getFeed()))
     )
   }
-
 }

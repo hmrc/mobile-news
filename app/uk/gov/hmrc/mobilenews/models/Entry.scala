@@ -38,7 +38,7 @@ object Entry {
   ).mapN(apply _)
 }
 
-case class Feed(id: Option[String], entry: Seq[Entry])
+case class Feed(id: Option[String], entries: Seq[Entry])
 object Feed {
   implicit val feedFormat: Format[Feed] = Json.format[Feed]
 
